@@ -12,4 +12,4 @@
       ●웹표준 기술 : HTML, CSS, ThymeLeaf, JavaScript<br>
       ●프레임 워크 : SpringBoot, JPA
       
-      ![image](https://user-images.githubusercontent.com/75648219/123906802-cc002d80-d9af-11eb-9693-24761fef388e.png)
+      ![boardDB](https://user-images.githubusercontent.com/75648219/123906895-f4882780-d9af-11eb-89df-b7c30bbdcbc5.png)
