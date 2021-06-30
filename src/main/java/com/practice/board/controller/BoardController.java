@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +29,8 @@ public class BoardController {
     @GetMapping("/list")
     public String board(Model model, @PageableDefault(size = 10) Pageable pageable,
                         @RequestParam(required = false, defaultValue = "") String searchText){
-        Page<Board> boards = boardRepository.findByTitleContainingOrContentContainingOrWriterContaining(searchText, searchText, searchText, pageable);
+        Page<Board> boards = boardRepository.findByTitleContainingOrContentContainingOrWriterContaining
+                (searchText, searchText, searchText, pageable);
         int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
         int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() +4);
         model.addAttribute("startPage", startPage);

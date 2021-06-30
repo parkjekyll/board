@@ -1,4 +1,4 @@
-package com.practice.board.swagger;
+package com.practice.board.config;
 
 import com.fasterxml.classmate.TypeResolver;
 import org.springframework.context.annotation.Bean;
