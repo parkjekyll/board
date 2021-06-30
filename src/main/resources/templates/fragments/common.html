@@ -17,10 +17,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/}">홈</a>
+              <a class="nav-link" th:href="@{/}" th:classappend="${navbar == 'home'} ? 'active'">홈</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/board/list}">게시판</a>
+              <a class="nav-link" th:href="@{/board/list}" th:classappend="${navbar == 'board'} ? 'active'">게시판</a>
             </li>
           </ul>
         </div>

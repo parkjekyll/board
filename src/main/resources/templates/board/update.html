@@ -21,11 +21,11 @@
     <input type="hidden" th:field="*{id}" id="board_id">
     <div class="form-group">
       <label for="title">제목</label>
-      <input type="text" class="form-control" th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}" placeholder="제목을 입력하세요.">
+      <input type="text" class="form-control" th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}" placeholder="제목을 입력하세요."><br>
       <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
         제목을 입력하세요.
       </div>
-      <input type="text" class="form-control" th:classappend="${#fields.hasErrors('writer')} ? 'is-invalid'" id="writer" th:field="*{writer}" placeholder="작성자">
+      <input type="text" class="form-control" th:classappend="${#fields.hasErrors('writer')} ? 'is-invalid'" id="writer" th:field="*{writer}" placeholder="작성자"><br>
       <div class="invalid-feedback" th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}">
         작성자를 입력해주세요.
       </div>
@@ -37,6 +37,7 @@
         내용을 입력해주세요.
       </div>
     </div>
+    <br>
     <div class="text-end">
       <a type="button" class="btn btn-primary" th:href="@{/board/list}">취소</a>
       <button onclick="updateChk()" class="btn btn-primary">수정</button>

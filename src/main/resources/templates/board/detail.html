@@ -21,17 +21,18 @@
   <input type="hidden" th:field="*{id}" id="board_id">
     <div class="form-group">
       <label for="title">제목</label>
-      <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="제목을 입력하세요." readonly>
-      <input type="text" class="form-control" id="writer" th:field="*{writer}" placeholder="작성자" readonly>
+      <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="제목을 입력하세요." readonly><br>
+      <input type="text" class="form-control" id="writer" th:field="*{writer}" placeholder="작성자" readonly><br>
     </div>
     <div class="form-group">
       <label for="content">내용</label>
       <textarea class="form-control" id="content" rows="3" th:field="*{content}" readonly></textarea>
     </div>
+    <br>
     <div class="text-end">
+      <a type="submit" class="btn btn-danger" onclick="deleteChk()">삭제하기</a>
       <a type="button" class="btn btn-light" th:href="@{/board/list}">뒤로가기</a>
       <a type="button" class="btn btn-primary" th:href="@{/board/update(id=${board.id})}">수정하기</a>
-      <a type="submit" class="btn btn-danger" onclick="deleteChk()">삭제하기</a>
     </div>
   </form>
 </div>
