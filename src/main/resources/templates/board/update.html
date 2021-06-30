@@ -1,0 +1,74 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common :: head('게시판')">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>게시판</title>
+</head>
+
+<body>
+<nav th:replace="fragments/common :: navbar('board')"/>
+
+<div class="container">
+  <h1>글쓰기</h1>
+  <form th:action="@{/board/update(id=${board.id})}" th:object="${board}" method="post">
+    <input type="hidden" th:field="*{id}" id="board_id">
+    <div class="form-group">
+      <label for="title">제목</label>
+      <input type="text" class="form-control" th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}" placeholder="제목을 입력하세요.">
+      <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+        제목을 입력하세요.
+      </div>
+      <input type="text" class="form-control" th:classappend="${#fields.hasErrors('writer')} ? 'is-invalid'" id="writer" th:field="*{writer}" placeholder="작성자">
+      <div class="invalid-feedback" th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}">
+        작성자를 입력해주세요.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="content">내용</label>
+      <textarea class="form-control" th:classappend="${#fields.hasErrors('content')} ? 'is-invalid'" id="content" rows="3" th:field="*{content}"></textarea>
+      <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
+        내용을 입력해주세요.
+      </div>
+    </div>
+    <div class="text-end">
+      <a type="button" class="btn btn-primary" th:href="@{/board/list}">취소</a>
+      <button onclick="updateChk()" class="btn btn-primary">수정</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  function updateChk(){
+    const id = document.getElementById("board_id").value;
+    const upChk = confirm("정말로 수정하시겠습니까?");
+    if(upChk==true){
+      location.href="/board/update?id="+id;
+      alert("성공적으로 수정되었습니다.");
+    }else{
+      alert("취소하셨습니다.");
+    }
+  }
+</script>
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  -->
+</body>
+
+</html>
